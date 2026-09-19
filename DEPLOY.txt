@@ -1,0 +1,42 @@
+MY KINO BOT — RENDER (BEPUL) GA QO'YISH
+
+1) GitHub ga yuklash:
+   - github.com da yangi repo oching (masalan my-kino-bot, Private ham bo'ladi)
+   - MY kino papkada:
+       git init
+       git add .
+       git commit -m "kino bot"
+       git branch -M main
+       git remote add origin https://github.com/SIZNING_LOGIN/my-kino-bot.git
+       git push -u origin main
+   (.env yuklanmaydi — .gitignore da bor. Faqat .env.example chiqadi.)
+
+2) Render da servis ochish (render.com, GitHub bilan kirish):
+   - New + -> Web Service -> repo ni tanlang
+   - Language: Python, Build Command: pip install -r requirements.txt
+   - Start Command: python bot.py
+   - Instance: Free
+   - Environment variables (Environment -> Add):
+       BOT_TOKEN = <token>
+       ADMIN_IDS = 8617811346
+       STORAGE_CHAT_ID = -1003918962533
+       FORCE_CHANNELS = (bo'sh bo'lsa qo'shmang)
+       RECOMMEND_CHANNEL / RECOMMEND_URL = (bo'lsa)
+     (PORT ni Render o'zi beradi, qo'shish shart emas)
+   - Create -> 2-3 daqiqada ishga tushadi. Log da
+     "Bot ishga tushdi" + "Health: :.../health" chiqishi kerak.
+
+3) Uyquga ketmasligi uchun (free servis 15 daq bo'sh tursa uxlaydi):
+   - uptimerobot.com da bepul akkaunt oching
+   - Add Monitor -> HTTP(s), URL: https://SIZNING_SERVIS.onrender.com/health
+   - Interval: 5 minutes
+   - Shu ping botni doim uyg'oq tutadi (oyiga 750 soat free limit ichida).
+
+MUHIM CHEKLOVLAR (bepul Render):
+  - Fayl tizimi vaqtincha: qayta deploy bo'lsa kino.db O'CHADI,
+    kinolarni /add bilan qayta qo'shish kerak bo'ladi.
+    Doimiy kerak bo'lsa: bepul Postgres (Neon/Supabase) ga o'tkazib
+    beraman — database.py ni qayta yozish kerak, aytsangiz qilaman.
+  - Birinchi ochilish 30-60 soniya "uxlab uyg'onadi" (cold start) — normal.
+  - Botda bir vaqtda FAQAT 1 nusxa ishlashi kerak: PC dagi bot.py ni
+    to'xtating, bo'lmasa Telegram "conflict" xato beradi.

@@ -1,0 +1,9 @@
+# ---> .gitignore <---
+.env
+*.db
+*.db-journal
+*.session*
+*.log
+*.err
+*.mp4
+__pycache__/
