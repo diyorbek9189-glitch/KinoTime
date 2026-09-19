@@ -56,7 +56,7 @@ async def main() -> None:
 
     await bot.set_my_commands(
         [
-            BotCommand(command="start", description="Boshlash"),
+            BotCommand(command="start", description="Boshlash / menyu"),
             BotCommand(command="random", description="Tasodifiy kino"),
             BotCommand(command="top", description="Top kinolar"),
             BotCommand(command="help", description="Yordam"),
